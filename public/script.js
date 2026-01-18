@@ -2,9 +2,6 @@ const form = document.getElementById("ascii-form");
 const output = document.getElementById("output");
 const presetSelect = document.getElementById("preset");
 
-// -----------------------------
-// Preset handling
-// -----------------------------
 presetSelect.addEventListener("change", () => {
   switch (presetSelect.value) {
     case "small":
@@ -23,23 +20,16 @@ presetSelect.addEventListener("change", () => {
       form.width.value = 60;
       form.height.value = 60;
       break;
-    default:
-      // Custom
-      break;
   }
 });
 
-// -----------------------------
-// Form submit
-// -----------------------------
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const button = form.querySelector("button");
   button.disabled = true;
-  button.textContent = "Generating...";
-
-  output.textContent = "Generating...";
+  button.textContent = "Generating…";
+  output.textContent = "Processing image…";
 
   const formData = new FormData();
   formData.append("image", form.image.files[0]);
@@ -63,6 +53,6 @@ form.addEventListener("submit", async (e) => {
     output.textContent = "ERROR: " + err.message;
   } finally {
     button.disabled = false;
-    button.textContent = "Generate";
+    button.textContent = "Generate ASCII";
   }
 });

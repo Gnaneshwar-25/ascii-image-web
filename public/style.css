@@ -7,17 +7,63 @@
 
 body {
   margin: 0;
-  padding: 16px;
-  background: #000;
-  color: #fff;
+  background: #0b0b0b;
+  color: #eaeaea;
   font-family: Consolas, "Courier New", monospace;
 }
 
 /* ===============================
-   Headings
+   Header
 ================================ */
-h1, h2 {
+.header {
+  text-align: center;
+  padding: 32px 16px;
+  border-bottom: 1px solid #222;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.subtitle {
+  margin-top: 8px;
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+/* ===============================
+   Layout
+================================ */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===============================
+   Cards
+================================ */
+.card {
+  background: #000;
+  border: 1px solid #222;
+  padding: 20px;
+}
+
+.card h2 {
   margin-top: 0;
+  font-size: 18px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 8px;
 }
 
 /* ===============================
@@ -26,15 +72,23 @@ h1, h2 {
 form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 520px;
-  margin-bottom: 16px;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
 }
 
 label {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
+  font-size: 13px;
+  opacity: 0.9;
 }
 
 input,
@@ -42,8 +96,8 @@ select,
 button {
   background: #000;
   color: #fff;
-  border: 1px solid #444;
-  padding: 6px;
+  border: 1px solid #333;
+  padding: 8px;
   font-family: inherit;
 }
 
@@ -51,8 +105,20 @@ input[type="checkbox"] {
   accent-color: #fff;
 }
 
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 button {
+  margin-top: 10px;
   cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #111;
 }
 
 button:disabled {
@@ -60,18 +126,13 @@ button:disabled {
   cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
-  background: #111;
-}
-
 /* ===============================
-   Output (ASCII-safe)
+   Output
 ================================ */
 pre {
   background: #000;
-  color: #fff;
-  border: 1px solid #444;
-  padding: 12px;
+  border: 1px solid #333;
+  padding: 14px;
   max-height: 70vh;
   overflow: auto;
 
@@ -84,33 +145,25 @@ pre {
 }
 
 /* ===============================
-   Helper text
+   Footer
 ================================ */
-.hint {
+.footer {
+  text-align: center;
+  padding: 16px;
+  border-top: 1px solid #222;
   font-size: 12px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* ===============================
-   Mobile improvements
+   Mobile
 ================================ */
 @media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  form {
-    max-width: 100%;
-  }
-
-  input,
-  select,
-  button {
-    font-size: 14px;
+  .header h1 {
+    font-size: 22px;
   }
 
   pre {
     font-size: 10px;
-    max-height: 60vh;
   }
 }

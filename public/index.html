@@ -2,70 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Image → ASCII Generator</title>
+  <title>ASCII Image Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>Image → ASCII Generator</h1>
+<header class="header">
+  <h1>ASCII Image Generator</h1>
+  <p class="subtitle">
+    High-accuracy image → ASCII & Fastfetch-compatible colored ASCII
+  </p>
+</header>
 
-<h2>Options</h2>
+<main class="container">
 
-<form id="ascii-form">
+  <!-- OPTIONS CARD -->
+  <section class="card">
+    <h2>Input & Options</h2>
 
-  <label>
-    Image:
-    <input type="file" name="image" accept="image/*" required>
-  </label>
+    <form id="ascii-form">
 
-  <label>
-    Preset size:
-    <select id="preset">
-      <option value="">Custom</option>
-      <option value="small">Small (Fastfetch)</option>
-      <option value="medium">Medium</option>
-      <option value="large">Large</option>
-      <option value="square">Square</option>
-    </select>
-  </label>
+      <div class="field">
+        <label>Image</label>
+        <input type="file" name="image" accept="image/*" required>
+      </div>
 
-  <label>
-    Width:
-    <input type="number" name="width" placeholder="auto">
-  </label>
+      <div class="field">
+        <label>Preset Size</label>
+        <select id="preset">
+          <option value="">Custom</option>
+          <option value="small">Small (Fastfetch)</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+          <option value="square">Square</option>
+        </select>
+      </div>
 
-  <label>
-    Height:
-    <input type="number" name="height" placeholder="auto">
-  </label>
+      <div class="row">
+        <div class="field">
+          <label>Width</label>
+          <input type="number" name="width" placeholder="auto">
+        </div>
 
-  <label>
-    <input type="checkbox" name="braille">
-    Braille mode
-  </label>
+        <div class="field">
+          <label>Height</label>
+          <input type="number" name="height" placeholder="auto">
+        </div>
+      </div>
 
-  <label>
-    <input type="checkbox" name="color">
-    Colored (Fastfetch)
-  </label>
+      <div class="row">
+        <label class="checkbox">
+          <input type="checkbox" name="braille">
+          Braille Mode
+        </label>
 
-  <label>
-    Threshold:
-    <input type="range" name="threshold" min="0" max="255" value="128">
-  </label>
+        <label class="checkbox">
+          <input type="checkbox" name="color">
+          Fastfetch Colors
+        </label>
+      </div>
 
-  <button type="submit">Generate</button>
-</form>
+      <div class="field">
+        <label>Threshold</label>
+        <input type="range" name="threshold" min="0" max="255" value="128">
+      </div>
 
-<h2>Output</h2>
+      <button type="submit">Generate ASCII</button>
 
-<pre id="output">Waiting…</pre>
+    </form>
+  </section>
 
-<p class="hint">
-  Tip: Colored output uses Fastfetch <code>$1–$9</code> color codes.
-  Colors will appear in Fastfetch, not in the browser.
-</p>
+  <!-- OUTPUT CARD -->
+  <section class="card">
+    <h2>Output</h2>
+
+    <pre id="output">Waiting for input…</pre>
+
+    <p class="hint">
+      Fastfetch colors use <code>$1–$9</code>.  
+      Colors appear in Fastfetch, not in the browser.
+    </p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>
+    Built for accuracy • No randomness • CLI-parity output
+  </p>
+</footer>
 
 <script src="script.js"></script>
 </body>
