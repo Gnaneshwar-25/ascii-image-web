@@ -1,0 +1,19 @@
+{
+  "name": "ascii-image-web",
+  "version": "1.0.0",
+  "description": "Web interface for image to ASCII and Fastfetch colored ASCII using existing Node.js logic",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
