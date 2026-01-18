@@ -10,17 +10,48 @@
 
 <h1>Image → ASCII Generator</h1>
 
+<h2>Options</h2>
+
 <form id="ascii-form">
-  <input type="file" name="image" accept="image/*" required>
-
-  <input type="number" name="width" placeholder="Width (auto)">
-  <input type="number" name="height" placeholder="Height (auto)">
-
-  <label><input type="checkbox" name="braille"> Braille</label>
-  <label><input type="checkbox" name="color"> Colored (Fastfetch)</label>
 
   <label>
-    Threshold
+    Image:
+    <input type="file" name="image" accept="image/*" required>
+  </label>
+
+  <label>
+    Preset size:
+    <select id="preset">
+      <option value="">Custom</option>
+      <option value="small">Small (Fastfetch)</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+      <option value="square">Square</option>
+    </select>
+  </label>
+
+  <label>
+    Width:
+    <input type="number" name="width" placeholder="auto">
+  </label>
+
+  <label>
+    Height:
+    <input type="number" name="height" placeholder="auto">
+  </label>
+
+  <label>
+    <input type="checkbox" name="braille">
+    Braille mode
+  </label>
+
+  <label>
+    <input type="checkbox" name="color">
+    Colored (Fastfetch)
+  </label>
+
+  <label>
+    Threshold:
     <input type="range" name="threshold" min="0" max="255" value="128">
   </label>
 
@@ -28,7 +59,13 @@
 </form>
 
 <h2>Output</h2>
+
 <pre id="output">Waiting…</pre>
+
+<p class="hint">
+  Tip: Colored output uses Fastfetch <code>$1–$9</code> color codes.
+  Colors will appear in Fastfetch, not in the browser.
+</p>
 
 <script src="script.js"></script>
 </body>

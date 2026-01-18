@@ -1,29 +1,54 @@
 const form = document.getElementById("ascii-form");
 const output = document.getElementById("output");
+const presetSelect = document.getElementById("preset");
 
+// -----------------------------
+// Preset handling
+// -----------------------------
+presetSelect.addEventListener("change", () => {
+  switch (presetSelect.value) {
+    case "small":
+      form.width.value = 60;
+      form.height.value = "";
+      break;
+    case "medium":
+      form.width.value = 80;
+      form.height.value = "";
+      break;
+    case "large":
+      form.width.value = 100;
+      form.height.value = "";
+      break;
+    case "square":
+      form.width.value = 60;
+      form.height.value = 60;
+      break;
+    default:
+      // Custom
+      break;
+  }
+});
+
+// -----------------------------
+// Form submit
+// -----------------------------
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  const button = form.querySelector("button");
+  button.disabled = true;
+  button.textContent = "Generating...";
 
   output.textContent = "Generating...";
 
   const formData = new FormData();
-
-  // Image (required)
   formData.append("image", form.image.files[0]);
 
-  // Numbers (only if provided)
-  if (form.width.value) {
-    formData.append("width", form.width.value);
-  }
-  if (form.height.value) {
-    formData.append("height", form.height.value);
-  }
+  if (form.width.value) formData.append("width", form.width.value);
+  if (form.height.value) formData.append("height", form.height.value);
 
-  // Boolean flags (ALWAYS sent)
   formData.append("braille", form.braille.checked ? "true" : "false");
   formData.append("color", form.color.checked ? "true" : "false");
-
-  // Threshold (always sent)
   formData.append("threshold", form.threshold.value);
 
   try {
@@ -33,10 +58,11 @@ form.addEventListener("submit", async (e) => {
     });
 
     const data = await res.json();
-    console.log("SERVER RESPONSE:", data);
-
     output.textContent = data.ascii || "No ASCII returned";
   } catch (err) {
     output.textContent = "ERROR: " + err.message;
+  } finally {
+    button.disabled = false;
+    button.textContent = "Generate";
   }
 });
