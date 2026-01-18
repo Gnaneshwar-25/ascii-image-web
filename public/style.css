@@ -1,0 +1,84 @@
+/* ===============================
+   Global
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: #000000;      /* BLACK background */
+  color: #ffffff;           /* WHITE text */
+  font-family: Consolas, "Courier New", monospace;
+}
+
+/* ===============================
+   Headings
+================================ */
+h1, h2 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+/* ===============================
+   Form
+================================ */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 520px;
+  margin-bottom: 16px;
+}
+
+input,
+button {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 6px;
+  font-family: inherit;
+}
+
+input[type="checkbox"] {
+  accent-color: #ffffff;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background: #111;
+}
+
+/* ===============================
+   ASCII Output (CRITICAL)
+================================ */
+pre {
+  background: #000000;      /* BLACK */
+  color: #ffffff;           /* WHITE */
+  border: 1px solid #444;
+  padding: 12px;
+  max-height: 70vh;
+  overflow: auto;
+
+  /* ASCII safety */
+  white-space: pre;
+  overflow-wrap: normal;
+  word-break: normal;
+
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+/* ===============================
+   Mobile
+================================ */
+@media (max-width: 600px) {
+  pre {
+    font-size: 10px;
+  }
+}

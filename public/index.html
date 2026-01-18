@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image → ASCII Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Image → ASCII Generator</h1>
+
+<form id="ascii-form">
+  <input type="file" name="image" accept="image/*" required>
+
+  <input type="number" name="width" placeholder="Width (auto)">
+  <input type="number" name="height" placeholder="Height (auto)">
+
+  <label><input type="checkbox" name="braille"> Braille</label>
+  <label><input type="checkbox" name="color"> Colored (Fastfetch)</label>
+
+  <label>
+    Threshold
+    <input type="range" name="threshold" min="0" max="255" value="128">
+  </label>
+
+  <button type="submit">Generate</button>
+</form>
+
+<h2>Output</h2>
+<pre id="output">Waiting…</pre>
+
+<script src="script.js"></script>
+</body>
+</html>
